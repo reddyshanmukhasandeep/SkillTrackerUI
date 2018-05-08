@@ -1,0 +1,21 @@
+.right{
+    float: right;
+    margin-left:2%;
+    margin-right:6%;
+}
+input[type=text]{
+    overflow: scroll;
+    width: 260% !important ;
+}
+
+.help-block{
+    color:red;
+    margin-left:-80%;
+}
+label{
+    font-weight: bold
+}
+
+p{
+    font-weight: bold
+}

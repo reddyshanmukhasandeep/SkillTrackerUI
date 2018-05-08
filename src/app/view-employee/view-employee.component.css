@@ -1,0 +1,18 @@
+.right{
+    float: right;
+    margin-left:2%;
+    margin-right:6%;
+}
+input[type=text]{
+    overflow: scroll;
+    width: 260% !important ;
+}
+
+
+label{
+    font-weight: bold
+}
+
+p{
+    font-weight: bold
+}

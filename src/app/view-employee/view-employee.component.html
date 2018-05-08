@@ -1,0 +1,204 @@
+<div>
+  <p>
+    Skill Tracker : View Employee Skills
+  </p>
+</div>
+
+<div class="container">
+
+  <form [formGroup]="associateForm">
+    <div class="form-group" style="text-align: center">
+      <div class="row">
+
+
+        <div style="float: left">
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="name">Name</label>
+            </div>
+            <div class="col-lg-4">
+              <input readonly type="text" [ngModel]=associate?.name class="form-control" formControlName="name" id="name">
+
+            </div>
+
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="associateID">Asc ID </label>
+            </div>
+            <div class="col-lg-4">
+              <input readonly type="text" class="form-control" [ngModel]=associate?.associateID formControlName="associateID" id="associateID">
+
+
+            </div>
+          </div>
+          <br>
+          <div class="row">
+
+            <div class="col-lg-4">
+              <label for="email">Email</label>
+            </div>
+            <div class="col-lg-4 ">
+              <input readonly type="text" class="form-control" [ngModel]="associate?.email" name="email" formControlName="email" id="email"
+                style="width:140%">
+
+            </div>
+
+          </div>
+          <br>
+          <div class="row">
+
+            <div class="col-lg-4">
+              <label for="mobile">Mobile</label>
+            </div>
+            <div class="col-lg-4 ">
+              <input readonly type="text" class="form-control" [ngModel]="associate?.mobile" name="mobile" formControlName="mobile" id="mobile"
+                style="width:140%">
+
+            </div>
+          </div>
+          <br>
+          <div class="row">
+
+
+            <div class="col-lg-4">
+              <label for="remark">Remark</label>
+            </div>
+            <div class="col-lg-4">
+              <input readonly type="text" class="form-control" [ngModel]="associate?.remark" name="remark" formControlName="remark" id="remark"
+                style="width:140%">
+              <span class="small" *ngIf="!associateForm.get('remark').valid && associateForm.get('remark').touched " class="help-block"
+                style="color:red;margin-left:-161%">
+                Enter Remark</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="center" style="margin:0px auto;">
+          <p> Pic </p>
+          <div class="row">
+            <input class="form-control" #AccUserImg type="file" name="pic" accept="image/*">
+            <!-- <img [src]="imageUrl" alt="image"/> -->
+
+          </div>
+        </div>
+        <div class="right">
+          <div>
+            <p>Status</p>
+          </div>
+
+          <div class="row">
+
+            <input readonly type="radio" formControlName="status" value="statusGreen" [checked]="associate?.statusGreen"> Available
+            <br>
+            <br>
+
+          </div>
+          <div class="row">
+
+            <input readonly type="radio" formControlName="status" value="statusBlue" [checked]="associate?.statusBlue">In Process
+            <br>
+            <br>
+
+          </div>
+          <div class="row">
+
+            <input readonly type="radio" formControlName="status" value="statusRed" [checked]="associate?.statusRed"> Allocated
+            <br>
+
+          </div>
+
+
+
+        </div>
+        <div class="right">
+          <div>
+            <p>Level</p>
+          </div>
+          <div class="row">
+
+            <input readonly type="radio" formControlName="level" value="level1" [checked]="associate?.level1"> L1
+            <br>
+            <br>
+
+          </div>
+          <div class="row">
+
+            <input readonly type="radio" formControlName="level" value="level2" [checked]="associate?.level2"> L2
+            <br>
+            <br>
+          </div>
+          <div class="row">
+
+            <input readonly type="radio" formControlName="level" value="level3" [checked]="associate?.level3"> L3
+            <br>
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <br>
+      <hr>
+      <div style="margin-left: -4%">
+        <div class="row">
+
+          <div class="col-lg-2" style="padding-left: 1%">
+            <label for="strength">Strength </label>
+          </div>
+          <div class="col-lg-2 ">
+            <input readonly type="text" class="form-control" [ngModel]="associate?.strength" name="strength" formControlName="strength"
+              id="strength" style="width:140% !important;margin-left: -26%">
+
+          </div>
+          <div class="col-lg-2" style="padding-left: 10%">
+            <label for="weakness">Weakness</label>
+          </div>
+          <div class="col-lg-3">
+            <input readonly type="text" class="form-control" [ngModel]="associate?.weakness" name="weakness" formControlName="weakness"
+              id="weakness" style="width:140% !important ">
+
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
+
+
+    </div>
+  </form>
+  <!-- Skills  -->
+  <div>
+    <div class="row">
+
+      <div class="col-lg-2" style="text-align: center">
+      <p>  Skills </p>
+      </div>
+
+    </div>
+    <br>
+
+    <div class="row" *ngFor="let skill of SkillList">
+      <div class="col-lg-3">
+        {{skill.skillName}}
+        <!-- <input type="text" name="skill.skillName" [(ngModel)]="skill.skillName" readonly name="" id=""> -->
+      </div>
+
+      <div class="col-lg-3">
+        <input disabled type="range" (change)="rangeSlider(skill)" min="1" max="100" [(ngModel)]="skill.points" name="skill.points"
+          value="skill.points"> {{skill.points}}
+      </div>
+      <br>
+
+    </div>
+    <br>
+
+  </div>
+  <div class="row">
+    <div style="text-align: center" class="col-lg-12">
+      <button style="margin: auto" class="btn btn-default btn-lg" [routerLink]="['/dashboard']">Back</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div >
+
+  <div style="padding: 5px 5px 5px 5px" class="row">
+    <div class="col-lg-4">
+      <input class="form-control font" #box (keyup.enter)="getassociates(box.value)" type="text" [(ngModel)]="name" name="value"
+        placeholder="Search By Name" />
+    </div>
+    <div class="col-lg-4">
+      <input class="form-control font" #box (keyup.enter)="getassociates(box.value)" type="text" [(ngModel)]="mobile" name="value"
+        placeholder="Search By Mobile" />
+    </div>
+    <div class="col-lg-4">
+      <input class="form-control font" #box (keyup.enter)="getassociates(box.value)" type="text" [(ngModel)]="email" name="email"
+        placeholder="Search By Email" />
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div style="text-align: center" class="col-lg-6">
+      <button style="margin: auto" class="btn btn-warning" (click)=addEmp()>Add Associate</button>
+    </div>
+    <div style="text-align: center" class="col-lg-6">
+      <button style="margin: auto" class="btn btn-warning" (click)=addSkill()>Add Skill</button>
+    </div>
+  </div>
+
+  <hr style="border-width: 2px;">
+  <div class="container-fluid" *ngFor="let associate of associateList|filterName:name|filterMobile:mobile|filterEmail:email| paginate: { itemsPerPage: 5, currentPage: p }">
+
+    <div class="row">
+      <div style="text-align: center" class="col-lg-1">
+        <img style="margin: auto;vertical-align: middle; width: 50px;height: 50px;border-radius: 50%;" src="./../../assets/profile.png">
+      </div>
+
+      <div style="text-align: center" class="col-lg-2">
+          {{associate.name}}
+        <!-- <input readonly [(ngModel)]="associate.name" name="associate.name" id=""> -->
+      </div> 
+      <div style="text-align: center" class="col-lg-2">
+          {{associate.associateID}}
+        <!-- <input readonly [(ngModel)]="associate.associateID" name="associate.associateID" id=""> -->
+      </div>
+      <div style="text-align: center" class="col-lg-2">
+{{associate.email}}
+        <!-- <input readonly [(ngModel)]="associate.email" name="associate.email" id=""> -->
+      </div> 
+      <div style="text-align: center" class="col-lg-2">
+{{associate.mobile}}
+        <!-- <input readonly [(ngModel)]="associate.mobile" name="associate.mobile" id=""> -->
+      </div> 
+      
+      <div style="text-align: center; padding: 0%" class="col-lg-1">
+
+        <button style="margin: auto" class="btn btn-primary" type="submit" (click)=editEmp(associate)>Edit</button>
+      </div>
+      <div style="text-align: center; padding: 0%" class="col-lg-1">
+
+        <button style="margin: auto" class="btn btn-primary" type="submit" (click)=deleteassociate(associate)>Delete</button>
+      </div>
+      <div style="text-align: center; padding: 0%" class="col-lg-1">
+
+        <button style="margin: auto" class="btn btn-primary" type="submit" (click)=viewEmp(associate)>View</button>
+      </div>
+
+    </div>
+
+
+    <br>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event" autoHide="true"></pagination-controls>
+  </div>
+
+</div>
